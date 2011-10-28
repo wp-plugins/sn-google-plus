@@ -51,7 +51,7 @@
             $html .= SNGP_ScriptInitGoogle();
             $html .= SNGP_ScriptInit();
             $html .= '<div class="'.SNGP_ID.' slider-box">'."\n";
-            $html .= '  <div class="slider-content" style="width:'.$bWidth.'px;height:'.$bHeight.'px;'.$options['css_styles'].'">'."\n";
+            $html .= '  <div class="slider-content" style="width:'.$bWidth.';height:'.$bHeight.';'.$options['css_styles'].'">'."\n";
             $html .= '  <div style="margin-left:'.$bMarginLeft.'px">'."\n";
             $html .= '  <g:plusone';
             if ($options['button_count'])
@@ -170,6 +170,10 @@
                 $marginLeft = 21;
             break;
         }
+        
+        
+        $width = $width . 'px';
+        $height = $height . 'px';
         
         switch ($direction) {
             case 'left':
