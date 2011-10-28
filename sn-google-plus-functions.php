@@ -44,14 +44,14 @@
             
             $imageURL = SNGP_IMAGE_URL . $options['icon'];
             list ($iWidth, $iHeight) = getimagesize(SNGP_IMAGE_DIR . $options['icon']);
-            list ($bWidth, $bHeight, $bMarginLeft) = SNGP_BoxDimensions($options['button_size'], $options['button_count']);
+            list ($bWidth, $bHeight, $bMarginLeft) = SNGP_BoxDimensions($options['button_size'], $options['button_count'], $options['position']);
             
             
             $html  = '<!-- '.SNGP_NAME.' '.SNGP_VERSION.' START -->'."\n";
             $html .= SNGP_ScriptInitGoogle();
             $html .= SNGP_ScriptInit();
             $html .= '<div class="'.SNGP_ID.' slider-box">'."\n";
-            $html .= '  <div class="slider-content" style="overflow:hidden!important;width:'.$bWidth.'px;height:'.$bHeight.'px;'.$options['css_styles'].'">'."\n";
+            $html .= '  <div class="slider-content" style="width:'.$bWidth.'px;height:'.$bHeight.'px;'.$options['css_styles'].'">'."\n";
             $html .= '  <div style="margin-left:'.$bMarginLeft.'px">'."\n";
             $html .= '  <g:plusone';
             if ($options['button_count'])
@@ -131,7 +131,7 @@
         return $p;
     }
     
-    function SNGP_BoxDimensions($size, $count) {
+    function SNGP_BoxDimensions($size, $count, $direction) {
         switch (true) {
             case ($size == 'tall'):
                 $width  = 80;
@@ -170,5 +170,17 @@
                 $marginLeft = 21;
             break;
         }
+        
+        switch ($direction) {
+            case 'left':
+            case 'right':
+                $height = 'auto';
+            break;
+            case 'top':
+            case 'bottom':
+                $width = 'auto';
+            break;        
+        }
+        
         return array($width, $height, $marginLeft);
     }
