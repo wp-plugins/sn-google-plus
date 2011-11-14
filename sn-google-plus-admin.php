@@ -1,12 +1,5 @@
 <?php
-    if (!function_exists('SNGP_AdminJS')) {
-        function SNGP_AdminJS() {
-            wp_enqueue_script('jquery');
-            wp_register_script('SNGP_AdminJS', SNGP_PLUGIN_URL . 'js/admin.js');
-            wp_enqueue_script('SNGP_AdminJS');
-        }
-    }
-    
+   
     if (!function_exists('SNGP_AdminCSS')) {
         function SNGP_AdminCSS() {
             wp_register_style("SNGP_AdminCSS", SNGP_PLUGIN_URL . 'css/admin.css', null, SNGP_VERSION);
@@ -95,5 +88,4 @@
 
     }
     add_action('admin_menu', 'SNGP_MenuOptions');
-    add_action('admin_init', 'SNGP_AdminJS');
     add_action('admin_init', 'SNGP_AdminCSS');
