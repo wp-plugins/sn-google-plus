@@ -1,7 +1,7 @@
 <?php
 define('SNGP_ID', 'SN-Google-Plus');
 define('SNGP_NAME', 'SN Google Plus');
-define('SNGP_VERSION', '1.1');
+define('SNGP_VERSION', '1.2');
 define('SNGP_AUTHOR', 'Mateusz "Retio" Lerczak');
 
 define('SNGP_DIR', basename(dirname(__FILE__)));
