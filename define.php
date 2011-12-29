@@ -1,7 +1,7 @@
 <?php
 define('SNGP_ID', 'SN-Google-Plus');
 define('SNGP_NAME', 'SN Google Plus');
-define('SNGP_VERSION', '1.2');
+define('SNGP_VERSION', '1.3');
 define('SNGP_AUTHOR', 'Mateusz "Retio" Lerczak');
 
 define('SNGP_DIR', basename(dirname(__FILE__)));
@@ -33,6 +33,11 @@ $SNGP_DefaultOptions = array(
     'open_opacity'          => 100,
     'close_opacity'         => 75,
     'css_styles'            => 'border:0;-webkit-border-bottom-left-radius: 10px;-moz-border-radius-bottomleft: 10px;border-bottom-left-radius: 10px;'
+);
+
+$SNGP_StringValParams = array(
+    'action',
+    'direction'
 );
 
 $SNGP_IconsArray = array(

@@ -90,10 +90,13 @@
 /**
  * Others func
  */
-    
+    function SNGP_comma2dot($val) {
+        $newVal = str_replace(',', '.', $val);
+        return $newVal;
+    }
 
     function SNGP_JSReady() {
-        global $SNGP_DefaultOptions;
+        global $SNGP_DefaultOptions, $SNGP_StringValParams;
         
         $options = get_option("SNGP_Settings");
         if (!$options)
@@ -114,9 +117,9 @@
             break;
         }
 
-        $params['startOpacity'] = $options['start_opacity'] / 100;
-        $params['openOpacity']  = $options['open_opacity'] / 100;
-        $params['closeOpacity'] = $options['close_opacity'] / 100;
+        $params['startOpacity'] = SNGP_comma2dot($options['start_opacity'] / 100);
+        $params['openOpacity']  = SNGP_comma2dot($options['open_opacity'] / 100);
+        $params['closeOpacity'] = SNGP_comma2dot($options['close_opacity'] / 100);
 
         $params['openTime']     = ($options['open_time'] >= 0) ? $options['open_time'] : 0;
         $params['closeTime']    = ($options['close_time'] >= 0) ? $options['close_time'] : 0;
@@ -125,7 +128,7 @@
 
         $p = '';
         foreach($params as $name => $value)
-            $p .= ((is_int($value) || is_float($value))) ? "'$name':$value," : "'$name':'$value',";
+            $p .= (in_array($name, $SNGP_StringValParams)) ? "'$name':'$value'," : "'$name':$value,";
 
         $p = (substr($p, -1) == ',') ? substr($p, 0, -1) : $p;
         return $p;

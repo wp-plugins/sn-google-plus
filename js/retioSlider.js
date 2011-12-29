@@ -1,4 +1,4 @@
-// retioSlider v0.3 - simple box slider based on jQuery
+// retioSlider v0.4 - simple box slider based on jQuery
 // Copyright (c) 2011 Mateusz Lerczak - kiki.diavo@gmail.com
 // http://mateuszlerczak.com/retioslider/
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
@@ -22,6 +22,8 @@ $.fn.retioSlider = function(options) {
         'type'          : 'slider'
     }, options);
     
+    
+    var slider      = $(this);
     var sContentDIV = $(this).children('.slider-content');
     var sLogoDIV    = $(this).children('.slider-logo');
     var sLogoIMG    = (settings['type'] == 'slider') ? sLogoDIV.children() : sLogoDIV.children().children();
@@ -45,19 +47,19 @@ $.fn.retioSlider = function(options) {
     var cSettings   = {};
     var sliderCSS   = {};
 
-    $(this).addClass('slider-'+oDirection);
+    slider.addClass('slider-'+oDirection);
     switch (oDirection) {
         case 'left':
         case 'right':
             if (settings['type'] == 'slider') {
                 sContentDIV.addClass('slider-float-'+oDirection);
-                cLength = -($(this).width() + 1);
+                cLength = -(slider.width() + 1);
             }
         break;
         case 'top':
         case 'bottom':
             if (settings['type'] == 'slider')
-               cLength = -($(this).height() + 1);
+               cLength = -(slider.height() + 1);
         break;
     }
     
@@ -121,33 +123,36 @@ $.fn.retioSlider = function(options) {
     sliderCSS[oDirection] = cLength;
     $(this).css(sliderCSS);
     
-    $(this).bind({
+    sLogoDIV.bind({
         click: function(){
-            $(this).toggleClass('slider-clicked');
-            if ($(this).hasClass('slider-clicked')) {
-                $(this).stop().animate(oSettings, oTime);
+            slider.toggleClass('slider-clicked');
+            if (slider.hasClass('slider-clicked')) {
+                slider.stop().animate(oSettings, oTime);
             } else {
-                $(this).stop().animate(cSettings, cTime);
+                slider.stop().animate(cSettings, cTime);
             }
-        },
+        }
+    });
+        
+   slider.bind({
         mouseenter: function(){
-            $(this).stop().animate(oSettings, oTime);
+            slider.stop().animate(oSettings, oTime);
         },
         mouseleave: function(){
-            $(this).stop().animate(cSettings, cTime);
+            slider.stop().animate(cSettings, cTime);
         }
     });
     
     switch (action) {
         case 'click':
-            $(this).unbind('mouseenter');
-            $(this).unbind('mouseleave');
+            slider.unbind('mouseenter');
+            slider.unbind('mouseleave');
         break;
         case 'hover':
-            $(this).unbind('click');
+            sLogoDIV.unbind('click');
         break;
     }
     
-    $(this).show();
+    slider.show();
     return this;
  }})(jQuery);
