@@ -1,7 +1,7 @@
 <?php
 define('SNGP_ID', 'SN-Google-Plus');
 define('SNGP_NAME', 'SN Google Plus');
-define('SNGP_VERSION', '1.3');
+define('SNGP_VERSION', '1.4');
 define('SNGP_AUTHOR', 'Mateusz "Retio" Lerczak');
 
 define('SNGP_DIR', basename(dirname(__FILE__)));
@@ -11,8 +11,8 @@ define('SNGP_IMAGE_URL', WP_PLUGIN_URL. '/' . SNGP_DIR . '/img/');
 define('SNGP_MAIN_FILE', SNGP_DIR.'.php');
 define('SNGP_PLUGIN_URL', WP_PLUGIN_URL . '/' . SNGP_DIR . '/');
 
-define('SNGP_FB_URL', 'https://www.facebook.com/pages/SN-Google-Plus/223052061093742');
-define('SNGP_URL', 'http://mateuszlerczak.com/sn-google-plus/');
+define('SNGP_FB_URL', 'https://www.facebook.com/WordPress.Like');
+define('SNGP_URL', 'http://www.wordpress-like.com/plugins/google/sn-google-plus/');
 
 define('SNGP_BLOG_URL', str_replace("https://", "http://", get_bloginfo('wpurl')));
 
