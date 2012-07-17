@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: SN Google Plus
-  Plugin URI: http://mateuszlerczak.com/sn-google-plus/
+  Plugin URI: http://wp-extend.info/plugins/google/sn-google-plus/
   Description: SN Google Plus button.
   Author: Retio
   Author URI: http://mateuszlerczak.com
