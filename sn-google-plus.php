@@ -5,7 +5,7 @@
   Description: SN Google Plus button.
   Author: Retio
   Author URI: http://mateuszlerczak.com
-  Version: 1.4
+  Version: 1.4.1
   Text Domain: SNGP
   Domain Path: /lang/
  */
