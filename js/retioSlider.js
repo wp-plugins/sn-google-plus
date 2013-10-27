@@ -1,6 +1,6 @@
-// retioSlider v0.4 - simple box slider based on jQuery
-// Copyright (c) 2011 Mateusz Lerczak - kiki.diavo@gmail.com
-// http://mateuszlerczak.com/retioslider/
+// retioSlider v0.5 - simple box slider based on jQuery
+// Copyright (c) 2011 Matthew Lerczak - kiki.diavo@gmail.com
+// https://github.com/retio/retioSlider
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 
 (function($) {
@@ -22,30 +22,31 @@ $.fn.retioSlider = function(options) {
         'type'          : 'slider'
     }, options);
     
+    if ($(window).width() < 768) {
+        return;
+    }
     
-    var slider      = $(this);
-    var sContentDIV = $(this).children('.slider-content');
-    var sLogoDIV    = $(this).children('.slider-logo');
-    var sLogoIMG    = (settings['type'] == 'slider') ? sLogoDIV.children() : sLogoDIV.children().children();
+    var slider  = $(this),
+    sContentDIV = $(this).children('.slider-content'),
+    sLogoDIV    = $(this).children('.slider-logo'),
+    sLogoIMG    = (settings['type'] == 'slider') ? sLogoDIV.children() : sLogoDIV.children().children(),
+    
+    oDirection  = settings['direction'],
+    oLength     = settings['openLenght'],
+    cLength     = settings['closeLenght'],
 
-    var ieSuck      = jQuery.browser.msie;
-    
-    var oDirection  = settings['direction'];
-    var oLength     = settings['openLenght'];
-    var cLength     = settings['closeLenght'];
+    oTime       = settings['openTime'],
+    cTime       = settings['closeTime'],
 
-    var oTime       = settings['openTime'];
-    var cTime       = settings['closeTime'];
-
-    var oOpacity    = settings['openOpacity'];
-    var cOpacity    = settings['closeOpacity'];
-    var sOpacity    = settings['startOpacity'];
+    oOpacity    = settings['openOpacity'],
+    cOpacity    = settings['closeOpacity'],
+    sOpacity    = settings['startOpacity'],
     
-    var action      = settings['action'];
+    action      = settings['action'],
     
-    var oSettings   = {};
-    var cSettings   = {};
-    var sliderCSS   = {};
+    oSettings   = {},
+    cSettings   = {},
+    sliderCSS   = {};
 
     slider.addClass('slider-'+oDirection);
     switch (oDirection) {
@@ -63,9 +64,9 @@ $.fn.retioSlider = function(options) {
         break;
     }
     
-    if (sLogoIMG.width() && sLogoIMG.height()) {  
-        var horizontalSize  = (-sLogoIMG.width() + "px");
-        var verticalSize    = (-sLogoIMG.height() + "px");
+    if (sLogoIMG.width() || sLogoIMG.height()) {  
+        var horizontalSize  = (-sLogoIMG.width() + "px"),
+        verticalSize    = (-sLogoIMG.height() + "px");
         
         switch (oDirection) {
             case 'left':
@@ -96,7 +97,7 @@ $.fn.retioSlider = function(options) {
         break;
     }
     
-    if (!ieSuck) {
+    if (jQuery.support.browser) {
         sliderCSS['opacity'] = sOpacity;
         oSettings['opacity'] = oOpacity;
         cSettings['opacity'] = cOpacity;
